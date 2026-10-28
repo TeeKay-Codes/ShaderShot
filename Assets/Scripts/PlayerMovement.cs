@@ -8,31 +8,32 @@ public class PlayerMovement : MonoBehaviour
     public GameObject bulletSpawnPoint;
     public float bulletSpeed;
     public float bulletLifetime;
+    public float horizontalInput;
+    public float verticalInput;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (Input.anyKeyDown)
-        {
-            Debug.Log("A button pressed");
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    void FixedUpdate()
-    {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("A button pressed");
+        }
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.fixedDeltaTime;
         transform.Translate(movement);
         if (Input.GetMouseButtonDown(0))
         {
             Fire();
         }
+    }
+    void FixedUpdate()
+    {
     }
     void Fire()
     {   
