@@ -25,8 +25,15 @@ public class PlayerMovement : MonoBehaviour
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(-horizontalInput, 0, -verticalInput) * speed * Time.fixedDeltaTime;
-        transform.Translate(movement);
+        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.fixedDeltaTime;
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Sprint();
+        }
+        else 
+        {
+            transform.Translate(movement);
+        }
         if (Input.GetMouseButtonDown(0))
         {
             Fire();
@@ -39,10 +46,10 @@ public class PlayerMovement : MonoBehaviour
     {   
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
-            if (bulletRb != null)
-            {
-                bulletRb.linearVelocity = transform.forward * bulletSpeed;
-            }
             Destroy(bullet, bulletLifetime);
+    }
+    void Sprint()
+    {
+        speed *= 2;
     }
 }

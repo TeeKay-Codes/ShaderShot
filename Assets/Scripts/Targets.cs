@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Targets : MonoBehaviour
 {
+    public int targets = 5;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -17,8 +18,10 @@ public class Targets : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Bullet"))
         {
+            targets--;
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
     }
+
 }
