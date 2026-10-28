@@ -12,7 +12,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (Input.anyKeyDown)
+        {
+            Debug.Log("A button pressed");
+        }
     }
 
     // Update is called once per frame
