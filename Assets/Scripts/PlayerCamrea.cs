@@ -18,11 +18,6 @@ public class PlayerCamrea : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    void FixedUpdate()
-    {
-        // 1. Get mouse inputs multiplied by sensitivity and deltaTime
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 

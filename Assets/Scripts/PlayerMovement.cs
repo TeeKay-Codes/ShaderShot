@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         }
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        Vector3 movement = new Vector3(horizontalInput, 0, verticalInput) * speed * Time.fixedDeltaTime;
+        Vector3 movement = new Vector3(-horizontalInput, 0, -verticalInput) * speed * Time.fixedDeltaTime;
         transform.Translate(movement);
         if (Input.GetMouseButtonDown(0))
         {
