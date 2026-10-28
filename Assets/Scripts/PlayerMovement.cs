@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
     void FixedUpdate()
     {
@@ -26,11 +25,13 @@ public class PlayerMovement : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         Vector3 movement = new Vector3(-horizontalInput, 0, -verticalInput) * speed * Time.fixedDeltaTime;
         transform.Translate(movement);
-    }
-    void Fire()
-    {
         if (Input.GetMouseButtonDown(0))
         {
+            Fire();
+        }
+    }
+    void Fire()
+    {   
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
             if (bulletRb != null)
@@ -38,6 +39,5 @@ public class PlayerMovement : MonoBehaviour
                 bulletRb.linearVelocity = transform.forward * bulletSpeed;
             }
             Destroy(bullet, bulletLifetime);
-        }
     }
 }
