@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Settings")]
     public int speed;
     public GameObject bulletPrefab;
+    public GameObject bulletSpawnPoint;
     public float bulletSpeed;
     public float bulletLifetime;
 
@@ -30,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.transform.position, bulletSpawnPoint.transform.rotation);
             Rigidbody bulletRb = bullet.GetComponent<Rigidbody>();
             if (bulletRb != null)
             {
